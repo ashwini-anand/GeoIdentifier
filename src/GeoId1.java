@@ -35,15 +35,21 @@ public class GeoId1 {
 
     public static void main(String[] args) throws Exception{
 
+        if(args.length < 2){
+            throw new Exception("Incorrect number of arguments. Please give arguments database name followed by table name");
+        }
+        String db = args[0];
+        String table = args[1];
+
         try {
             Class.forName(driver);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
             System.exit(1);
         }
-        Connection con = DriverManager.getConnection("jdbc:hive2://localhost:10000/default", "admin", "admin");
+        Connection con = DriverManager.getConnection("jdbc:hive2://localhost:10000/"+db, "admin", "admin");
         Statement stmt = con.createStatement();
-        ResultSet res = stmt.executeQuery("SELECT * FROM sales LIMIT "+NUMBEROFROWS); // hardcoding query in first version
+        ResultSet res = stmt.executeQuery("SELECT * FROM "+table+" LIMIT "+NUMBEROFROWS);
         System.out.println("Result:");
         ResultSetMetaData rsmd = res.getMetaData();
         int columnsNumber = rsmd.getColumnCount();
