@@ -76,6 +76,7 @@ public class GeoId1 {
         for(Integer i :result){
             System.out.print(i+" ");
         }
+        System.out.println();
     }
 
     static void getGeoInfo() throws Exception{
@@ -90,6 +91,9 @@ public class GeoId1 {
         for(int i=0; i<columns.length;i++){
             for(int j=0; j<NUMBEROFROWS;j++){
                 String str = columns[i].contents.get(j);
+                if(str==null){
+                    str = " ";
+                }
                 String[] tokens = tokenizerME.tokenize(str);
                 Span[] nameSpans = nameFinderME.find(tokens);
                 if(nameSpans.length >0){
