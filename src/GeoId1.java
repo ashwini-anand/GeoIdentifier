@@ -72,7 +72,7 @@ public class GeoId1 {
                 result.add(i);
             }
         }
-        System.out.println("\nFollowing columns contains geographical location info (0 based index) with accuracy"+ACCURACY);
+        System.out.println("\nFollowing columns contains geographical location info (0 based index) with accuracy "+ACCURACY);
         for(Integer i :result){
             System.out.print(i+" ");
         }
